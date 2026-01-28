@@ -53,10 +53,62 @@ with st.sidebar:
 if view == "I Need Help":
     st.title("🆘 I Need Help")
     st.write("Fill out the form below to request assistance with snow removal.")
-    # Placeholder for Requester Form
+    
+    # Submit Request Form
     with st.container():
         st.subheader("Submit Request")
-        st.info("Form implementation (Abdoul) will go here.")
+        
+        # Form fields with clear labels for accessibility
+        with st.form("request_form"):
+            # Title field
+            title = st.text_input(
+                label="**What do you need help with?**",
+                placeholder="e.g., Driveway blocked, Can't access door",
+                help="Brief description of your need"
+            )
+            
+            # Location field
+            location = st.text_input(
+                label="**Your Address**",
+                placeholder="e.g., 123 Maple Street, Boston MA",
+                help="Where do you need help?"
+            )
+            
+            # Large text area for detailed request
+            request_text = st.text_area(
+                label="**Tell us more about your situation**",
+                placeholder="Describe why you need help, any medical conditions, accessibility needs, etc.",
+                height=150,
+                help="Be as detailed as possible to help volunteers understand urgency"
+            )
+            
+            # Submit button
+            submitted = st.form_submit_button(
+                label="🔔 REQUEST HELP",
+                use_container_width=True,
+                type="primary"
+            )
+            
+            # Handle form submission
+            if submitted and title and location and request_text:
+                # Store new request in session state
+                new_job = {
+                    "id": len(st.session_state['jobs']) + 1,
+                    "title": title,
+                    "location": location,
+                    "request_text": request_text,
+                    "ai_analysis": {
+                        "urgency_score": 5,  # Placeholder - will be set by AI triage
+                        "category": "Pending",
+                        "summary": title
+                    },
+                    "status": "OPEN"
+                }
+                st.session_state['jobs'].append(new_job)
+                st.success(f"✅ Request submitted! ID: {new_job['id']}")
+                st.balloons()
+            elif submitted:
+                st.error("❌ Please fill in all fields.")
 
 elif view == "I Can Help":
     st.title("🏘️ I Can Help")

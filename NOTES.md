@@ -7,7 +7,7 @@ Architect
 Build the triage_logic() function and state management.
 Abdoul
 Frontend
-Build the Streamlit columns for the volunteer job board.
+Link Submit form to AI triage & build the volunteer job board.
 Ariel
 UX
 Map the "Happy Path": Request -> Triage -> Claimed.

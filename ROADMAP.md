@@ -4,7 +4,7 @@ Role: This is your PM’s heartbeat. Check these off every 10-15 minutes.
 
 ### Phase 1: Infrastructure (Min 0-10)
 - [ ] **Beatrice:** Scaffold `app.py` with `st.sidebar` navigation (Requester vs. Volunteer).
-- [ ] **Abdoul:** Create the `Submit Request` form (Title, Location, Large Text Area).
+- [x] **Abdoul:** Create the `Submit Request` form (Title, Location, Large Text Area).
 - [ ] **Christian:** Set up the `session_state` database schema and a "Clear Database" reset button for testing.
 - [ ] **Ariel/Robert:** Finalize the "Accessibility First" color palette.
 
